@@ -15,7 +15,7 @@ contract RequestFactory {
       moneyRequest = address(
         new moneyRequest(
             asker, amountRequested, paybackAmount,
-            loanType, contractFee)
+            loanType )
       )
     }
 
