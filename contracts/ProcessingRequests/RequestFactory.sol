@@ -6,10 +6,10 @@ contract RequestFactory {
 
 
   function createMoneyRequest(
+      address payable origin,
       uint256 amountRequested,
       uint256 paybackAmount,
-      string memory purpose,
-      address payable origin
+      string memory loanType
   ) public returns (address moneyRequest) {
       moneyRequest = address(
         new moneyRequest(origin, amountRequested, paybackAmount,

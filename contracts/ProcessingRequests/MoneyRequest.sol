@@ -9,6 +9,7 @@ contract moneyRequest {
     uint256 public  amountRequested,
     uint256 public  paybackAmount,
     string public loanType
+    address payable private requestManager,
     bool private withdrawnByAsker;
     bool public withdrawnByLender;
 
