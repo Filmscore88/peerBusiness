@@ -6,19 +6,14 @@ contract RequestFactory {
 
 
   function createMoneyRequest(
-      uint256 amount,
+      uint256 amountRequested,
       uint256 paybackAmount,
       string memory purpose,
       address payable origin
   ) public returns (address moneyRequest) {
-
       moneyRequest = address(
-        new moneyRequest(
-            asker, amountRequested, paybackAmount,
-            loanType )
-      )
+        new moneyRequest(origin, amountRequested, paybackAmount,
+                        loanType, msg.sender)
+      );
     }
-
-
-
 }
