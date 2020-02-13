@@ -4,7 +4,7 @@ module.exports = {
   networks: {
     development: {
       host: "127.0.0.1",
-      port: 8545,
+      port: 854,
       network_id: "*" // Match any network id
     },
     solc: {
@@ -14,7 +14,7 @@ module.exports = {
       }
     },
     develop: {
-      port: 8545
+      port: 854
     }
   }
 };

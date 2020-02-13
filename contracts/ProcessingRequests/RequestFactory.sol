@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "./MoneyRequest.sol"
+import "./MoneyRequest.sol";
 
 contract RequestFactory {
 

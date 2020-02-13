@@ -1,15 +1,14 @@
 pragma solidity ^0.5.0;
 
 contract moneyRequest {
-    address payable private requestManager,
-    address payable public asker,
-    address payable public lender,
-    bool public lentMoney,
-    bool public debtPayedOff,
-    uint256 public  amountRequested,
-    uint256 public  paybackAmount,
-    string public loanType
-    address payable private requestManager,
+    address payable public asker;
+    address payable public lender;
+    bool public lentMoney;
+    bool public debtPayedOff;
+    uint256 public  amountRequested;
+    uint256 public  paybackAmount;
+    string public loanType;
+    address payable private requestManager;
     bool private withdrawnByAsker;
     bool public withdrawnByLender;
 
@@ -21,11 +20,11 @@ contract moneyRequest {
         address payable requestManager
 
     ) public {
-        asker = asker,
-        amountRequested = amountRequested,
-        paybackAmount = paybackAmount,
-        loanType = loanType,
-        address payable requestManager
+        asker = asker;
+        amountRequested = amountRequested;
+        paybackAmount = paybackAmount;
+        loanType = loanType;
+        address payable requestManager;
     }
 
 

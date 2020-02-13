@@ -4,30 +4,25 @@ interface RequestFactoryInterface {
     function creatMoneyRequestInterface(uint256, uint256, string calldata, address payable) external returns(address);
 }
 
-interface LendingRequestInterface {
+interface MoneyRequestInterface {
     function deposit(address payable) external payable returns(bool, bool);
-    function withdraw(address) external;
-    function cleanUp() external;
-    function cancelRequest() external;
-    function asker() external view returns(address payable);
-    function withdrawnByLender() external view returns(bool);
-    function getRequestParameters() external view returns(address payable, address payable, uint256, uint256, uint256, string memory);
-    function getRequestState() external view returns(bool, bool, bool, bool);
+
 }
 contract RequestManager {
     address private requestFactory;
     address[] private moneyRequests;
 
-    constructor(address _factory) public {
-        requestFactory = _factory;
+    constructor(address factory) public {
+        requestFactory = factory;
     }
 
     function query(amount, paybackAmount, loanType){
-      RequestFactoryInterface(requestFactory).creatMoneyRequestInterface(
-        amount, paybackAmount, loanType, msg.sender
-        );
 
+      address request = RequestFactoryInterface(requestFactory).createMoneyRequestInterface(
+        msg.sender, paybackAmount, loanType
+       );
 
+      moneyRequests.push(request);
     }
 
     function deposit(public payable moneyRequest) public payable{
