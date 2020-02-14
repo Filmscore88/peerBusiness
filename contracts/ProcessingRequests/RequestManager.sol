@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
 interface RequestFactoryInterface {
-    function creatMoneyRequestInterface(uint256, uint256, string calldata, address payable) external returns(address);
+    function createMoneyRequestInterface(uint256, uint256, string calldata, address payable) external returns(address);
 }
 
 interface MoneyRequestInterface {
@@ -16,10 +16,10 @@ contract RequestManager {
         requestFactory = factory;
     }
 
-    function query(amount, paybackAmount, loanType) public {
+    function query(uint256 amount, uint256 paybackAmount, string memory loanType) public {
 
       address request = RequestFactoryInterface(requestFactory).createMoneyRequestInterface(
-        msg.sender, paybackAmount, loanType
+        amount, paybackAmount, loanType, msg.sender
        );
 
       moneyRequests.push(request);

@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-contract moneyRequest {
+contract MoneyRequest {
     address payable public asker;
     address payable public lender;
     bool public lentMoney;
