@@ -12,7 +12,7 @@ contract RequestFactory {
       string memory loanType
   ) public returns (address moneyRequest) {
       moneyRequest = address(
-        new moneyRequest(origin, amountRequested, paybackAmount,
+        new MoneyRequest(origin, amountRequested, paybackAmount,
                         loanType, msg.sender)
       );
     }

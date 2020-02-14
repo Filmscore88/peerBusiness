@@ -24,7 +24,7 @@ contract moneyRequest {
         amountRequested = amountRequested;
         paybackAmount = paybackAmount;
         loanType = loanType;
-        address payable requestManager;
+        requestManager = requestManager;
     }
 
 
@@ -38,7 +38,7 @@ contract moneyRequest {
          fromLender = true;
          fromAsker = false;
      } else if (lentMoney && !debtPayedOff) {
-         require(_origin == asker, "invalid paybackaddress");
+         require(from == asker, "invalid paybackaddress");
          require(msg.value == paybackAmount, "invalid payback");
          debtPayedOff = true;
          fromLender = false;
@@ -57,7 +57,7 @@ contract moneyRequest {
             withdrawnByAsker = true;
             asker.transfer(address(this).balance);
         } else if (from == lender) {
-            if (!debtSettled) {
+            if (!debtPayedOff) {
                 require(!withdrawnByAsker, "WithdrawnByAsker");
                 lentMoney = false;
                 lender.transfer(address(this).balance);

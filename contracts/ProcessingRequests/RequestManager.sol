@@ -16,7 +16,7 @@ contract RequestManager {
         requestFactory = factory;
     }
 
-    function query(amount, paybackAmount, loanType){
+    function query(amount, paybackAmount, loanType) public {
 
       address request = RequestFactoryInterface(requestFactory).createMoneyRequestInterface(
         msg.sender, paybackAmount, loanType
@@ -25,7 +25,7 @@ contract RequestManager {
       moneyRequests.push(request);
     }
 
-    function deposit(public payable moneyRequest) public payable{
+    function deposit(address payable moneyRequest) public payable{
       MoneyRequestInterface(moneyRequest).deposit.value(msg.value)(msg.sender);
     }
 }
